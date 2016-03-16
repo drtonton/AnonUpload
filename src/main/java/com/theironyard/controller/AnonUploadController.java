@@ -2,6 +2,7 @@ package com.theironyard.controller;
 
 import com.theironyard.entities.AnonFile;
 import com.theironyard.services.AnonFileRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by noellemachin on 3/16/16.
@@ -33,5 +35,9 @@ public class AnonUploadController {
         files.save(anonFile);
 
         response.sendRedirect("/");
+    }
+    @RequestMapping(path = "/files", method = RequestMethod.GET)
+    public List<AnonFile> getFiles() {
+        return (List<AnonFile>) files.findAll();
     }
 }
