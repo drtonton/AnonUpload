@@ -60,4 +60,12 @@ public class AnonFile {
     public void setOriginalFilename(String originalFilename) {
         this.originalFilename = originalFilename;
     }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 }

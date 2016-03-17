@@ -44,7 +44,6 @@ public class AnonUploadController {
                 files.save(anonFile);
             }
         }
-
         response.sendRedirect("/");
     }
     @RequestMapping(path = "/files", method = RequestMethod.GET)
