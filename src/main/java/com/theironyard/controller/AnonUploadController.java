@@ -24,14 +24,14 @@ public class AnonUploadController {
     AnonFileRepository files;
 
     @RequestMapping(path = "/upload", method = RequestMethod.POST)
-    public void upload(MultipartFile file, HttpServletResponse response, boolean perm) throws IOException {
+    public void upload(MultipartFile file, HttpServletResponse response, boolean perm, String comment) throws IOException {
         File dir = new File("public/files");
         dir.mkdirs();
         File f = File.createTempFile("file", file.getOriginalFilename(), dir);
         FileOutputStream fos = new FileOutputStream(f);
         fos.write(file.getBytes());
 
-        AnonFile anonFile = new AnonFile(f.getName(), file.getOriginalFilename(), perm);
+        AnonFile anonFile = new AnonFile(f.getName(), file.getOriginalFilename(), perm, comment);
         if (files.count() < 10) {
             files.save(anonFile);
         }

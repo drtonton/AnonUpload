@@ -21,13 +21,17 @@ public class AnonFile {
     @Column(nullable = false)
     boolean perm;
 
+    @Column(nullable = false)
+    String comment;
+
     public AnonFile() {
     }
 
-    public AnonFile(String filename, String originalFilename, boolean perm) {
+    public AnonFile(String filename, String originalFilename, boolean perm, String comment) {
         this.filename = filename;
         this.originalFilename = originalFilename;
         this.perm = perm;
+        this.comment = comment;
     }
 
     public int getId() {
